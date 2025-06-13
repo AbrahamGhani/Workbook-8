@@ -77,26 +77,15 @@ public class UserInterface {
     }
 
     private void processPriceRangeRequest() {
-        System.out.print("Enter Minimum Price: ");
-        double priceMin = scanner.nextDouble();
-        scanner.nextLine();
+        double[] priceRange = PromptUser.promptPriceRange();
 
-        System.out.print("Enter Maximum Price: ");
-        double priceMax = scanner.nextDouble();
-        scanner.nextLine();
-
-        List<Vehicle> results = dealership.getVehiclesByPrice(priceMin, priceMax);
+        List<Vehicle> results = dealership.getVehiclesByPrice(priceRange[0], priceRange[1]);
         displayVehicles(results);
     }
 
     private void processMakeModelRequest() {
-        System.out.print("Enter Make: ");
-        String make = scanner.nextLine();
-
-        System.out.print("Enter Model: ");
-        String model = scanner.nextLine();
-
-        List<Vehicle> results = dealership.getVehiclesByMakeModel(make,model);
+        String[] makeModel = PromptUser.promptMakeModel();
+        List<Vehicle> results = dealership.getVehiclesByMakeModel(makeModel[0],makeModel[1]);
         displayVehicles(results);
     }
 
